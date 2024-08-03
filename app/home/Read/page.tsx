@@ -28,7 +28,7 @@ export default function Page() {
   return (
     <div className="bg-black">
       <button className='p-1 bg-slate-500 text-white' onClick={fetchData}>Fetch details</button>
-      <div className='flex flex-col flex-wrap'>
+      <div className='flex  flex-wrap'>
         {users.map((user, index) => (
           <div key={index}>
             <h3 className='text-pink-700'>Car Name: {user.carName}</h3>
