@@ -2,7 +2,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 
-export default function page() {
+export default function Page() {
   const[massage,setMassage]=useState("Enter the details of the car that you want to delete");
   const [user,setUser]= React.useState({
     carName:"",
