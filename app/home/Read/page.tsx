@@ -28,13 +28,8 @@ export default function Page() {
   return (
     <div className="bg-black">
       <button className='p-1 bg-slate-500 text-white' onClick={fetchData}>Fetch details</button>
-<<<<<<< HEAD
       <div className='flex flex-wrap'>
         {loading && users.map((user, index) => (
-=======
-      <div className='flex  flex-wrap'>
-        {users.map((user, index) => (
->>>>>>> 4e673084fa2d6e2192a76fc6226875418ba7b78d
           <div key={index}>
             <h3 className='text-pink-700'>Car Name: {user.carName}</h3>
             <h3 className='text-pink-700'>Manufacturing Year: {user.Year}</h3>
