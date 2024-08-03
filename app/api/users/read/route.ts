@@ -11,14 +11,14 @@ import { NextRequest,NextResponse } from "next/server";
       }
       
       async function getCars(): Promise<CarDocument[]> {
-        const result: CarDocument[] = await Car.find({}).limit(50);
+        const result: CarDocument[] = await Car.find({});
         return result;
       }
 
 export async function GET(request:NextRequest){
     try{
         const cars: CarDocument[] = await getCars();
-       
+        
         return  NextResponse.json(
             cars
            )

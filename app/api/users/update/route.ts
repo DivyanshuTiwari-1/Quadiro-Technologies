@@ -22,8 +22,7 @@ export async function POST(request: NextRequest) {
         if (temp) {
             await temp.updateOne(NewCar);
             console.log("successful");
-
-            return NextResponse.json({ message: "Successfully updated" }, { status: 200 });
+          return NextResponse.json({ message: "Successfully updated" }, { status: 200 });
         } else {
             const savedCar = new Car(NewCar);
             await savedCar.save();

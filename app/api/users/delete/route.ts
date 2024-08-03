@@ -1,38 +1,33 @@
 import { connect } from "@/helper/dbconfig";
 import Car from "@/models/car";
-import { NextRequest,NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import mongoose from "mongoose";
 
-    connect();
+connect();
 
-export async function POST(request:NextRequest){
-
-    
-    try{
-        const reqbody=await request.json();
-       const {carName,Year,Price}=reqbody;
-       const NewCar = new Car({
-        carName, 
-        Year, 
-        Price
+export async function POST(request: NextRequest) {
+  try {
+    const reqBody = await request.json();
+    const { carName, Year, Price } = reqBody;
+    const newCar = new Car({
+      carName,
+      Year,
+      Price
     });
-      
-       const temp= await Car.findOne({carName:carName});//cheack if car is already exist
-       if(temp){
-         await Car.deleteOne({_id:NewCar._id});
-       console.log("deleted");
-        return   NextResponse.json({message:"cardeleted"},{status:200});
 
-       }
-       console.log("cannotdelete");
-       return NextResponse.json({message:"carNot exist"});
-     
-       
-
-
-    }
-    catch(error:any){
-           return NextResponse.json({error:error.message},{status:500});
+    // Check if car already exists
+    const existingCar = await Car.findOne({ carName: carName });
+    if (existingCar) {
+      // Delete the car if it exists
+      await Car.deleteOne({ _id: existingCar._id });
+      console.log("Car deleted");
+      return NextResponse.json({ message: "Car deleted" }, { status: 200 });
     }
 
+    console.log("Car does not exist, cannot delete");
+    return NextResponse.json({ message: "Car does not exist" }, { status: 404 });
+
+  } catch (error: any) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
 }
