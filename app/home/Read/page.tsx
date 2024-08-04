@@ -15,9 +15,11 @@ export default function Page() {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get("/api/users/read",{
-         headers:{
-          cache: 'no-store' 
+      const res = await axios.get("/api/users/read", {
+        headers: {
+          'Cache-Control': 'no-store',
+          'Pragma': 'no-cache',
+          'Expires': '0',
         }
       });
       const data = await res.data;
