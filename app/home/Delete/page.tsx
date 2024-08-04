@@ -10,7 +10,8 @@ export default function Page() {
     Price:""
   })
  
-  const SubmitForm= async ()=>{
+  const SubmitForm= async (e:any)=>{
+     e.preventDefalut();
     try {
       const res= await axios.post("/api/users/delete",user);
       console.log(res);

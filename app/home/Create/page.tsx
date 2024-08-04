@@ -12,7 +12,8 @@ export default function Page() {
     Price:""
   })
  
-  const SubmitForm= async ()=>{
+  const SubmitForm= async (e:any)=>{
+    e.preventDefault();
     try {
       const res= await axios.post("/api/users/create",user);
       setLoading(true);

@@ -13,7 +13,8 @@ export default function Page() {
     Newprice:"",
   })
  
-  const SubmitForm= async ()=>{
+  const SubmitForm= async (e:any)=>{
+    e.preventDefalut();
     try {
       const res= await axios.post("/api/users/update",user);
       setMassage("Car updated successfully ,go to read");
