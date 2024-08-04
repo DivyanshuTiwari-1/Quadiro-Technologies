@@ -18,8 +18,8 @@ import { NextRequest,NextResponse } from "next/server";
 export async function GET(request:NextRequest){
     try{
         const cars: CarDocument[] = await getCars();
-        
-        return  NextResponse.json(
+       
+        return NextResponse.json(
             cars
            )
        }
