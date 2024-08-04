@@ -15,7 +15,11 @@ export default function Page() {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get("/api/users/read");
+      const res = await axios.get("/api/users/read",{
+         headers:{
+          cache: 'no-store' 
+        }
+      });
       const data = await res.data;
       setUsers(data);
       setMessage("Car details fetched successfully");
