@@ -15,14 +15,14 @@ import { NextRequest,NextResponse } from "next/server";
         return result;
       }
 
-export async function GET(request:NextRequest){
+export async function GET(request:NextRequest,res: NextResponse){
     try{
         const cars: CarDocument[] = await getCars();
          res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
       res.setHeader('Pragma', 'no-cache');
       res.setHeader('Expires', '0');
       res.setHeader('Surrogate-Control', 'no-store');
-        return  NextResponse.json(
+        return  res.status(200).json(
             cars
            )
        }
